@@ -108,7 +108,36 @@ impl Color {
 // You can use the main function as your playground
 // Feel free to edit/use it for experimenting with your code
 // The main function will not be tested/graded in this file
-fn main() {}
+fn main() {
+    let mut c = Color::new(7, 13, 74);
+    println!("c: {c:?}");
+
+    let c_clone = c.clone();
+    println!("c_clone: {c_clone:?}");
+
+    println!("c_clone equals c: {}", c_clone == c);
+
+    let c_copy = c;
+    println!("c_copy: {c_copy:?}, c: {c:?}");
+
+    let c_red = Color::from_name("red");
+    println!("c_red: {c_red:?}");
+
+    let c_unknown = Color::from_name("unknown");
+    println!("c_unknown: {c_unknown:?}");
+
+    let c_hex = Color::from_hex("#123456");
+    println!("c_hex: {c_hex:?}, to_hex: {}", c_hex.to_hex());
+
+    println!("c distance to c_hex: {}", c.distance(&c_hex));
+    println!("c closest base color: {:?}", c.closest_base_color());
+    println!("c to grayscale: {:?}", c.to_grayscale());
+
+    c.darken(0.2);
+    println!("c darkened by 0.5: {:?}", c);
+
+    println!("c mixed with c_hex: {:?}", c.mix(&c_hex));
+}
 
 //////////////////////////////////////////////////////////////////////////////
 // DO NOT EDIT BELOW THIS LINE
